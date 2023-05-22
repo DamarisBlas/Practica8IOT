@@ -1,0 +1,15 @@
+USE practica8db;
+
+CREATE TABLE tablahorno (
+	numreg    INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    horno_id int unsigned default 1,
+    zona varchar(30)default 'Dormitorio',
+    fecha date NOT NULL DEFAULT CURDATE(),
+    horaactual time NOT NULL DEFAULT CURTIME(),
+    calefactor BIT(1),
+    enfriador BIT(1),
+    set_point float,
+    tempproceso float,
+    sensorlm35 float,
+	PRIMARY KEY (numreg)
+);
