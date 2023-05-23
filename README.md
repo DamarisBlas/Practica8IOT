@@ -4,4 +4,4 @@ Integrantes:
 
 Damaris Blas
 Paola
-Mayra 
+Mayra Valdez 
