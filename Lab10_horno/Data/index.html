@@ -1,0 +1,272 @@
+<!--paolaquispe-->
+
+<!DOCTYPE html>
+<html>
+ 
+  <head>
+    <title>ESP32 IOT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+  
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  
+  </head>
+  <body>
+    <p><img src="https://i.ibb.co/vqFqz08/UCB.jpg" margin= "auto" alt="ucba" width= "1130" height="300"></p>
+
+  <header>
+   <div style='margin-left: 2vw;display: inline-flex; height:150px;'><img
+        src="https://i.ibb.co/qjNV8vY/LOGOIOT.png">
+      <p style='margin-left: 10vw; margin-right: 10vw; color: #e98a25; font-size: 3vw;'>BETA</p>
+      <p>
+        <span class="sensor-labels"> </span>
+         <span id="RSSI_img"></span>conexion
+
+      </p>
+      <!--<p style='margin-left: 10vw; margin-right: 10vw; color: #e98a25; font-size: 3vw;'>FECHA</p>
+      <p style='margin-left: 10vw; margin-right: 10vw; color: #e98a25; font-size: 3vw;'>GRAFICA</p>--> 
+   </div>
+
+  </header>
+  <!--rssi
+  <h3>Informacion de la conexion</h3>
+  <p>
+    <span class="sensor-labels"> </span>
+    <span id="RSSI_img"></span>
+  </p>
+  -->     
+
+      </div>
+    </div>
+	
+ <!--Menú de navegacion-->
+ <h3 style='margin-left: 10vw; margin-right: 10vw; color: #e98a25; font-size: 3vw;'>MENU</h3>
+
+ <div class="menu_superior" style="margin: 0px 60px;">
+  <nav>
+      <ul>
+          <li class="izquierda"><a href="index.html">Control manual</a></li>
+          <li class="izquierda"><a href="sensor.html">Set point</a></li>
+          <li class="izquierda"><a href="reloj.html">Configuracion de tiempo</a></li>
+      </ul>
+  </nav>
+  <hr>
+</div>
+<div style="height: 25px;"></div>
+<!--Contenido-->
+<!--Encendido y apagado-->
+
+
+<div style="display: grid; grid-template-columns: 45% 45%; gap: 10%; margin: 0px 10vw; margin-bottom: 50px;">
+  <div style="display: flex; justify-content: center; align-items: center;">
+      <img id="imagen-foco" src="https://i.ibb.co/z6Pqd3K/Focoapagado.png" alt="foco" width="50%">
+      <input id='switch-foco' type='image' src='http://esploradores.com/Practicas_html/apagar_300x88.png' style='display:block; margin:auto' width='40%' onclick="cambiarIconosFoco('estado-foco', 'imagen-foco', 'switch-foco', 'FocoEstado')">
+      <input type="range" style='display: none;' id="estado-foco" name="estado-foco" value=0>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center;">
+      <img id="imagen-ventilador" src="https://i.ibb.co/c2Kfmw6/apagadoult.jpg" alt="ventilador" width="50%">
+      <input id='switch-ventilador' type='image' src='http://esploradores.com/Practicas_html/apagar_300x88.png' style='display:block; margin:auto' width='40%' onclick="cambiarIconosVentilador('estado-ventilador', 'imagen-ventilador', 'switch-ventilador', 'VentiladorEstado')">
+      <input type="range" style='display: none;' id="estado-ventilador" name="estado-ventilador" value=0>
+  </div>
+</div>  
+  
+    <footer>
+      <p></p>
+      
+      <div style="display: inline-flex;">
+        <div style="display: flex; margin-right:2vw;">
+          <div style="text-align: center;">
+            <img src="https://i.ibb.co/ys85qzp/foto-Paola.jpg" alt="paolaquispe" style="width: 15vw;">
+          </div>
+        </div>
+        <div style="display: flex; margin-right:10vw;">
+          <div style="text-align: left;">
+            
+          </div>
+        </div>
+        <div style="display: flex; ">
+          <div style="text-align: left;">
+            <p>paola Andrea Quispe vargas <br> paolaandreaquispev@gmail.com <br>61163241<br>&#169 BETA</p>
+          </div>
+        </div>
+        
+      </div>
+      
+    </footer>
+  
+  </body>
+  <script src="script.js"></script>
+
+ <script>
+/*Funcion que permite cambiar los iconos del foco*/
+function cambiarIconosFoco(idValor, idImagen, idSwitch, ruta){
+           if (document.getElementById(idValor).value == 0){
+               document.getElementById(idImagen).src = 'https://i.ibb.co/1zzfZz2/focoprendido.png';
+               document.getElementById(idValor).value = 1;
+               document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/encender_300x88.png';
+           } else {
+               document.getElementById(idImagen).src = 'https://i.ibb.co/z6Pqd3K/Focoapagado.png';
+               document.getElementById(idValor).value = 0;
+               document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/apagar_300x88.png';
+           }
+            var xhttpCambio = new XMLHttpRequest();
+            xhttpCambio.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                console.log("todo bien");
+                }
+            };
+            xhttpCambio.open("GET", "/"+ruta+document.getElementById(idValor).value, true);
+            xhttpCambio.send();
+        }
+        /*Funcion que permite cambiar los iconos del ventilador*/
+        function cambiarIconosVentilador(idValor, idImagen, idSwitch, ruta){
+            if (document.getElementById(idValor).value == 0){
+                document.getElementById(idImagen).src = 'https://i.ibb.co/K5jVKnX/encendido.jpg';
+                document.getElementById(idValor).value = 1;
+                document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/encender_300x88.png';
+            } else {
+                document.getElementById(idImagen).src = 'https://i.ibb.co/c2Kfmw6/apagadoult.jpg';
+                document.getElementById(idValor).value = 0;
+                document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/apagar_300x88.png';
+            }
+            var xhttpCambio = new XMLHttpRequest();
+            xhttpCambio.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                console.log("todo bien");
+                }
+            };
+            xhttpCambio.open("GET", "/"+ruta+document.getElementById(idValor).value, true);
+            xhttpCambio.send();
+        }
+
+
+var chartADC = new Highcharts.Chart({
+  chart:{ renderTo:'chart-ADC' },
+  title: { text: 'ADC' },
+  series: [{
+    showInLegend: false,
+    data: []
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    },
+    series: { color: '#18009c' }
+  },
+  xAxis: {
+    type: 'datetime',
+    dateTimeLabelFormats: { second:'%S' }
+  },
+  yAxis: {
+    title: { text: 'Datos del ADC A0' }
+  },
+  credits: { enabled: false }
+});
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      if(chartADC.series[0].data.length > 40) {
+        chartADC.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chartADC.series[0].addPoint([x, y], true, false, true);
+      }
+    }
+  };
+  xhttp.open("GET", "/ADC", true);
+  xhttp.send();
+}, 1000 ) ;
+
+//info rssi
+setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        if(parseInt(this.responseText)>= -35){
+          document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/QJRCsPq/Signal5.png' alt='Signal5' border=0>`;
+            } else if(parseInt(this.responseText)>= -42 && parseInt(this.responseText)< -35){
+              document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/rbmx98Y/Signal4.png' alt='Signal4' border=0>`;
+            } else if(parseInt(this.responseText)>= -49 && parseInt(this.responseText)< -42){
+              document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/DLFmYrf/Signal3.png' alt='Signal3' border=0>`;
+            } else if(parseInt(this.responseText)>= -56 && parseInt(this.responseText)< -49){
+              document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/wsfVZjV/Signal2.png' alt='Signal2' border=0>`;
+            } else if(parseInt(this.responseText)< -56){
+              document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/c15y2zx/Signal1.png' alt='Signal1' border=0>`;
+            }
+      }
+    };
+    xhttp.open("GET", "/RSSI", true);
+    xhttp.send();
+  }, 10000);
+
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("IP").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/ip", true);
+    xhttp.send();
+  }, 10000);
+
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("hostname").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/hostname", true);
+    xhttp.send();
+  }, 10000);
+
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("PSK").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/PSK", true);
+    xhttp.send();
+  }, 10000);
+
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("BSSI").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/BSSI", true);
+    xhttp.send();
+  }, 10000);
+
+  setInterval(function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("RSSI").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/RSSI_T", true);
+    xhttp.send();
+  }, 10000);
+
+  
+ 
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
