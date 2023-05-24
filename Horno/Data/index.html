@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HORNO</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="icono.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+  <div class="sidebar1">
+    <br><br>
+  </div>
+
+  <div class="contaup">
+      <input type="checkbox" id="check">
+      <label for="check">
+          <i class="fas fa-bars" id="btnCheck"></i>
+          <i class="fas fa-times" id="btnClose"></i>
+      </label>
+      <div class="sidebar1">
+          <header>Menú</header>
+          <ul>
+              <li><a href="index.html" class="active">CNTR MANUAL</a></li>
+              <li><a href="sensor.html">SET_POINT</a></li>
+              <li><a href="reloj.html">POR HORARIO</a></li>
+              
+          </ul>
+      </div>
+      
+  </div>
+  
+  
+  <header >
+    <img class="banner"src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Ucatolica2.jpg">
+  </header>
+
+      <div class="container text-center ">
+        <div class="row ">
+          <div class="col recuadros ">
+            <img src="https://i.ibb.co/Vpj15mg/horno.png" width="95">
+          </div> 
+          <div class="col  recuadros">
+            <h4> HORNITO INTELIGENTE</h4>
+          </div>
+          <div class="col  recuadros ">
+            <p id="fecha"></p>
+            <p id="hora"></p>
+            <p id="clima"></p>
+            <script>
+              // Obtenemos la fecha actual
+              var fechaActual = new Date();
+        
+              // Mostramos la fecha en el elemento con id "fecha"
+              document.getElementById("fecha").innerHTML =
+                fechaActual.toLocaleDateString();
+        
+              // Mostramos la hora en el elemento con id "hora"
+              document.getElementById("hora").innerHTML =
+                fechaActual.toLocaleTimeString();
+        
+              // Hacemos una petición a la API del clima
+              fetch(
+                "https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&lang=es&units=metric"
+              )
+                .then((response) => response.json())
+                .then((data) => {
+                  // Mostramos la información del clima en el elemento con id "clima"
+                  document.getElementById("clima").innerHTML =
+                    "El clima actual en BOLIVIA es: " + data.weather[0].description;
+                });
+            </script>
+          </div>
+          <div class="col recuadros">
+            <div class="waveStrength-3">
+              <div class="wave">
+                <div class="wave">
+                  <div class="wave">
+                    <div class="wave">
+                      <div class="wave"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <center>
+  <h1>Hornito IOT</h1>
+  <!--Contenido-->
+<!--Encendido y apagado-->
+
+
+<div style="display: grid; grid-template-columns: 45% 45%; gap: 10%; margin: 0px 10vw; margin-bottom: 50px;">
+  <div style="display: flex; justify-content: center; align-items: center;">
+      <img id="imagen-foco" src="https://i.ibb.co/wBsJvM3/focos-1.png" alt="foco" width="50%">
+      <input id='switch-foco' type='image' src='http://esploradores.com/Practicas_html/apagar_300x88.png' style='display:block; margin:auto' width='40%' onclick="cambiarIconosFoco('estado-foco', 'imagen-foco', 'switch-foco', 'FocoEstado')">
+      <input type="range" style='display: none;' id="estado-foco" name="estado-foco" value=0>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center;">
+    
+      <img id="imagen-ventilador" src="https://i.ibb.co/gJFt74L/ventilador-1.png" alt="ventilador" width="50%">
+      <input id='switch-ventilador' type='image' src='http://esploradores.com/Practicas_html/apagar_300x88.png' style='display:block; margin:auto' width='50px' onclick="cambiarIconosVentilador('estado-ventilador', 'imagen-ventilador', 'switch-ventilador', 'VentiladorEstado')">
+      <input type="range" style='display: none;' id="estado-ventilador" name="estado-ventilador" value=0>
+  </div>
+</div>  
+
+
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>IP</th>
+        <th>SSID</th>
+        <th>PASSWORD</th>
+        <th>MAC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dato 1</td>
+        <td>Dato 2</td>
+        <td>Dato 3</td>
+        <td>Dato 4</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <footer class="text-center text-white" style="background-color: #5f5f5f;" >
+    <div class="card">
+      <div class="carousel">
+        <img src="https://i.ibb.co/KhqqTYS/m2.jpg" alt="Imagen 1">
+        <img src="https://i.ibb.co/FJQZ5cw/mayra-Valdez.png" alt="Imagen 2">
+        <img src="https://i.ibb.co/k2SGvM2/Beige-Woman-Employee-3-D-Illustration-Zoom-Virtual-Background.png" alt="Imagen 3">
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="carousel">
+        <img src="https://i.ibb.co/ys85qzp/foto-Paola.jpg" alt="Imagen 4" >
+        <img src="https://i.ibb.co/jWLg5Fw/paola-Quispe.png" alt="Imagen 5">
+        <img src="https://i.ibb.co/k2SGvM2/Beige-Woman-Employee-3-D-Illustration-Zoom-Virtual-Background.png" alt="Imagen 3">
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="carousel">
+        <img src="https://i.postimg.cc/MTmVDwZh/dam.jpg" alt="Imagen 7">
+        <img src="https://i.ibb.co/9pr9B2C/damaris-Blas.png" alt="Imagen 8">
+        <img src="https://i.ibb.co/k2SGvM2/Beige-Woman-Employee-3-D-Illustration-Zoom-Virtual-Background.png" alt="Imagen 3">
+      </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright
+    </div>
+  </footer>
+  </center>
+  <ol id="new-projects"></ol>
+  <script>
+  $( "#new-projects" ).load( "/resources/load.html #projects li");
+  </script>
+</body>
+<script src="script.js"></script>
+
+<script>
+/*Funcion que permite cambiar los iconos del foco*/
+function cambiarIconosFoco(idValor, idImagen, idSwitch, ruta){
+          if (document.getElementById(idValor).value == 0){
+              document.getElementById(idImagen).src = 'https://i.ibb.co/d69sLCR/focos.png';
+              document.getElementById(idValor).value = 1;
+              document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/encender_300x88.png';
+          } else {
+              document.getElementById(idImagen).src = 'https://i.ibb.co/wBsJvM3/focos-1.png';
+              document.getElementById(idValor).value = 0;
+              document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/apagar_300x88.png';
+          }
+           var xhttpCambio = new XMLHttpRequest();
+           xhttpCambio.onreadystatechange = function() {
+               if (this.readyState == 4 && this.status == 200) {
+               console.log("todo bien");
+               }
+           };
+           xhttpCambio.open("GET", "/"+ruta+document.getElementById(idValor).value, true);
+           xhttpCambio.send();
+       }
+       /*Funcion que permite cambiar los iconos del ventilador*/
+       function cambiarIconosVentilador(idValor, idImagen, idSwitch, ruta){
+           if (document.getElementById(idValor).value == 0){
+               document.getElementById(idImagen).src = 'https://i.ibb.co/x2XDch9/ventilador.png';
+               document.getElementById(idValor).value = 1;
+               document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/encender_300x88.png';
+           } else {
+               document.getElementById(idImagen).src = 'https://i.ibb.co/gJFt74L/ventilador-1.png';
+               document.getElementById(idValor).value = 0;
+               document.getElementById(idSwitch).src ='http://esploradores.com/Practicas_html/apagar_300x88.png';
+           }
+           var xhttpCambio = new XMLHttpRequest();
+           xhttpCambio.onreadystatechange = function() {
+               if (this.readyState == 4 && this.status == 200) {
+               console.log("todo bien");
+               }
+           };
+           xhttpCambio.open("GET", "/"+ruta+document.getElementById(idValor).value, true);
+           xhttpCambio.send();
+       }
+
+
+var chartADC = new Highcharts.Chart({
+ chart:{ renderTo:'chart-ADC' },
+ title: { text: 'ADC' },
+ series: [{
+   showInLegend: false,
+   data: []
+ }],
+ plotOptions: {
+   line: { animation: false,
+     dataLabels: { enabled: true }
+   },
+   series: { color: '#18009c' }
+ },
+ xAxis: {
+   type: 'datetime',
+   dateTimeLabelFormats: { second:'%S' }
+ },
+ yAxis: {
+   title: { text: 'Datos del ADC A0' }
+ },
+ credits: { enabled: false }
+});
+setInterval(function ( ) {
+ var xhttp = new XMLHttpRequest();
+ xhttp.onreadystatechange = function() {
+   if (this.readyState == 4 && this.status == 200) {
+     var x = (new Date()).getTime(),
+         y = parseFloat(this.responseText);
+     //console.log(this.responseText);
+     if(chartADC.series[0].data.length > 40) {
+       chartADC.series[0].addPoint([x, y], true, true, true);
+     } else {
+       chartADC.series[0].addPoint([x, y], true, false, true);
+     }
+   }
+ };
+ xhttp.open("GET", "/ADC", true);
+ xhttp.send();
+}, 1000 ) ;
+
+//info rssi
+setInterval(function () {
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       if(parseInt(this.responseText)>= -35){
+         document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/QJRCsPq/Signal5.png' alt='Signal5' border=0>`;
+           } else if(parseInt(this.responseText)>= -42 && parseInt(this.responseText)< -35){
+             document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/rbmx98Y/Signal4.png' alt='Signal4' border=0>`;
+           } else if(parseInt(this.responseText)>= -49 && parseInt(this.responseText)< -42){
+             document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/DLFmYrf/Signal3.png' alt='Signal3' border=0>`;
+           } else if(parseInt(this.responseText)>= -56 && parseInt(this.responseText)< -49){
+             document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/wsfVZjV/Signal2.png' alt='Signal2' border=0>`;
+           } else if(parseInt(this.responseText)< -56){
+             document.getElementById("RSSI_img").innerHTML = `<img src='https://i.ibb.co/c15y2zx/Signal1.png' alt='Signal1' border=0>`;
+           }
+     }
+   };
+   xhttp.open("GET", "/RSSI", true);
+   xhttp.send();
+ }, 10000);
+
+ setInterval(function () {
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("IP").innerHTML = this.responseText;
+     }
+   };
+   xhttp.open("GET", "/ip", true);
+   xhttp.send();
+ }, 10000);
+
+ setInterval(function () {
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("hostname").innerHTML = this.responseText;
+     }
+   };
+   xhttp.open("GET", "/hostname", true);
+   xhttp.send();
+ }, 10000);
+
+ setInterval(function () {
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("PSK").innerHTML = this.responseText;
+     }
+   };
+   xhttp.open("GET", "/PSK", true);
+   xhttp.send();
+ }, 10000);
+
+ setInterval(function () {
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("BSSI").innerHTML = this.responseText;
+     }
+   };
+   xhttp.open("GET", "/BSSI", true);
+   xhttp.send();
+ }, 10000);
+
+ setInterval(function () {
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("RSSI").innerHTML = this.responseText;
+     }
+   };
+   xhttp.open("GET", "/RSSI_T", true);
+   xhttp.send();
+ }, 10000);
+
+ 
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
