@@ -3,5 +3,5 @@ Horno IOT
 Integrantes:
 
 Damaris Blas
-Paola
+Paola Quispe
 Mayra Valdez 
